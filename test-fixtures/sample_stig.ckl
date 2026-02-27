@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CHECKLIST>
+  <ASSET>
+    <ROLE>Member Server</ROLE>
+    <ASSET_TYPE>Computing</ASSET_TYPE>
+    <HOST_NAME>NIPRNET-WEB-01</HOST_NAME>
+    <HOST_IP>10.10.1.50</HOST_IP>
+    <HOST_MAC>00:1A:2B:3C:4D:5E</HOST_MAC>
+    <HOST_FQDN>niprnet-web-01.mil.local</HOST_FQDN>
+    <TECH_AREA>Application Review</TECH_AREA>
+    <TARGET_KEY>4205</TARGET_KEY>
+    <WEB_OR_DATABASE>false</WEB_OR_DATABASE>
+    <WEB_DB_SITE></WEB_DB_SITE>
+    <WEB_DB_INSTANCE></WEB_DB_INSTANCE>
+  </ASSET>
+  <STIGS>
+    <iSTIG>
+      <STIG_INFO>
+        <SI_DATA><SID_NAME>version</SID_NAME><SID_DATA>3</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>classification</SID_NAME><SID_DATA>UNCLASSIFIED</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>customname</SID_NAME><SID_DATA></SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>stigid</SID_NAME><SID_DATA>Windows_Server_2019_STIG</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>description</SID_NAME><SID_DATA>Windows Server 2019 Security Technical Implementation Guide</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>filename</SID_NAME><SID_DATA>U_MS_Windows_Server_2019_V3R3_STIG.zip</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>releaseinfo</SID_NAME><SID_DATA>Release: 3 Benchmark Date: 26 Jul 2024</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>title</SID_NAME><SID_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>uuid</SID_NAME><SID_DATA>4e4a8a5f-5a5d-4e01-bdb6-c12c4beaf07e</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>notice</SID_NAME><SID_DATA>terms-of-use</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>source</SID_NAME><SID_DATA>STIG.DOD.MIL</SID_DATA></SI_DATA>
+      </STIG_INFO>
+
+      <!-- ═══════════════════ CAT I — OPEN ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205625</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>high</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205625r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-00-000010</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have Telnet Client turned off.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Discuss</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Unnecessary services increase the attack surface of a system. Some of these services may not support required levels of authentication or encryption or may provide an attacker with a cleartext channel of communication.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Check_Content</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Run "Windows Features" and verify "Telnet Client" is not installed. If Telnet Client is installed, this is a finding.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Uninstall "Telnet Client" from the system. Navigate to the Windows Features dialog, deselect Telnet Client, and click OK.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>False_Positives</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>False_Negatives</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Documentable</VULN_ATTRIBUTE><ATTRIBUTE_DATA>false</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Mitigations</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Potential_Impact</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Third_Party_Tools</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Mitigation_Control</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Security_Override_Guidance</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Check_Content_Ref</VULN_ATTRIBUTE><ATTRIBUTE_DATA>M</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Weight</VULN_ATTRIBUTE><ATTRIBUTE_DATA>10.0</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Class</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Unclass</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4205</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Telnet Client feature is installed. Verified via PowerShell: Get-WindowsFeature Telnet-Client shows Installed state.</FINDING_DETAILS>
+        <COMMENTS>POA&amp;M #2024-047 submitted. Awaiting change window for removal.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205909</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>high</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000095-GPOS-00049</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205909r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-MS-000020</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must use an antivirus program.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Discuss</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Malicious software can establish a base on individual desktops and servers. Employing an automated mechanism to detect this type of software will aid in elimination of the software from the operating system.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Install an antivirus solution on the system. Ensure definitions are current and real-time protection is enabled.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Windows Defender is disabled. No third-party AV solution detected. SCAP scan confirmed AV service is stopped.</FINDING_DETAILS>
+        <COMMENTS>Procurement for Trellix endpoint protection in progress. ETA 30 days.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205672</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>high</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000029-GPOS-00010</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205672r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-SO-000050</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must automatically remove or disable temporary user accounts after 72 hours.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Configure the policy value for Computer Configuration >> Windows Settings >> Security Settings >> Account Policies >> Account Lockout Policy >> "Account lockout duration" to "0" (account is locked out until administrator unlocks it).</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Three temporary contractor accounts (TEMP_JONES, TEMP_SMITH, TEMP_DAVIS) have been active for 14+ days with no expiration set.</FINDING_DETAILS>
+        <COMMENTS>Accounts belong to contractors performing network upgrade. Request submitted to set expiration dates.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ CAT II — OPEN ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205630</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205630r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-00-000080</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have Windows PowerShell 2.0 removed.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Uninstall the "Windows PowerShell 2.0 Engine" and "Windows PowerShell 2.0" features.</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>PowerShell 2.0 engine is installed. This version does not support constrained language mode and can be used to bypass logging.</FINDING_DETAILS>
+        <COMMENTS>Scheduled for removal during next maintenance window (2024-03-15).</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205733</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000163-GPOS-00072</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205733r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-CC-000040</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must be configured to audit Account Management - User Account Management successes and failures.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Configure the policy value for Computer Configuration >> Windows Settings >> Security Settings >> Advanced Audit Policy Configuration >> System Audit Policies >> Account Management >> "Audit User Account Management" with "Success" and "Failure" selected.</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Audit policy for User Account Management is set to "No Auditing". auditpol /get /subcategory:"User Account Management" confirms no audit configured.</FINDING_DETAILS>
+        <COMMENTS>GPO update submitted to security team. Awaiting approval.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205800</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205800r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-CC-000310</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must disable the Windows Installer Always install with elevated privileges option.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Configure the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Windows Installer >> "Always install with elevated privileges" to "Disabled".</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Registry key HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated is set to 1.</FINDING_DETAILS>
+        <COMMENTS></COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205850</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00228</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205850r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-SO-000300</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have the built-in Windows password complexity policy enabled.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Configure the policy value for Computer Configuration >> Windows Settings >> Security Settings >> Account Policies >> Password Policy >> "Password must meet complexity requirements" to "Enabled".</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Password complexity is disabled in local security policy. Users can set passwords that do not meet complexity requirements.</FINDING_DETAILS>
+        <COMMENTS>Identified during quarterly SCAP scan. POAM in progress.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ CAT III — OPEN ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205660</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>low</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205660r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-00-000400</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 systems must have Unified Extensible Firmware Interface (UEFI) firmware and be configured to run in UEFI mode, not Legacy BIOS.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Ensure UEFI firmware is installed and configured on the system. Transition from Legacy BIOS to UEFI mode if possible.</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>System is running in Legacy BIOS mode. msinfo32 confirms BIOS Mode: Legacy.</FINDING_DETAILS>
+        <COMMENTS>Hardware refresh scheduled for Q3 FY25. Will address at that time.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ NOT A FINDING ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205658</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205658r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-00-000380</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have a host-based firewall installed and enabled.</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>NotAFinding</STATUS>
+        <FINDING_DETAILS>Windows Firewall is enabled on all profiles (Domain, Private, Public). Verified via: netsh advfirewall show allprofiles state</FINDING_DETAILS>
+        <COMMENTS></COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205704</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205704r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-CC-000100</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must prevent the display of slide shows on the lock screen.</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>NotAFinding</STATUS>
+        <FINDING_DETAILS>Registry confirms NoLockScreenSlideshow = 1. Slide shows disabled via GPO.</FINDING_DETAILS>
+        <COMMENTS></COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205749</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>high</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205749r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-CC-000210</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have the Server Message Block (SMB) v1 protocol disabled on the SMB server.</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>NotAFinding</STATUS>
+        <FINDING_DETAILS>SMBv1 is disabled. Verified: Get-SmbServerConfiguration | Select EnableSMB1Protocol returns False.</FINDING_DETAILS>
+        <COMMENTS>Disabled per CISA advisory in 2022. Confirmed compliant.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205820</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205820r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-SO-000120</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 minimum password length must be configured to 14 characters.</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>NotAFinding</STATUS>
+        <FINDING_DETAILS>Minimum password length is set to 14 characters via GPO. Verified via secedit /export.</FINDING_DETAILS>
+        <COMMENTS></COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ NOT APPLICABLE ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205910</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205910r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-MS-000030</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must be running Microsoft .NET Framework 4.6 or later.</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Not_Applicable</STATUS>
+        <FINDING_DETAILS>This server does not host any .NET applications. N/A per system mission profile.</FINDING_DETAILS>
+        <COMMENTS>Approved N/A by ISSO on 2024-01-15.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ NOT REVIEWED ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205915</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205915r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-MS-000040</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 Exploit Protection system-level mitigation, Data Execution Prevention (DEP), must be on.</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Not_Reviewed</STATUS>
+        <FINDING_DETAILS></FINDING_DETAILS>
+        <COMMENTS>Pending review during next assessment cycle.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+    </iSTIG>
+  </STIGS>
+</CHECKLIST>

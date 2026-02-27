@@ -1,0 +1,39 @@
+Control ID,Control Name,Compliance Status,Test Result,Findings,Test Date
+AC-1,Access Control Policy and Procedures,Compliant,Pass,,2024-01-10
+AC-2,Account Management,Non-Compliant,Fail,"Three temporary contractor accounts (TEMP_JONES, TEMP_SMITH, TEMP_DAVIS) have no expiration date set. AD review confirmed accounts active for 45+ days without review.",2024-01-10
+AC-3,Access Enforcement,Compliant,Pass,,2024-01-10
+AC-6,Least Privilege,Non-Compliant,Fail,"Seven standard user accounts have local Administrator group membership. No business justification on file for elevated access.",2024-01-10
+AC-7,Unsuccessful Logon Attempts,Compliant,Pass,,2024-01-10
+AC-11,Session Lock,Compliant,Pass,,2024-01-10
+AC-17,Remote Access,Compliant,Pass,,2024-01-10
+AU-2,Event Logging,Non-Compliant,Fail,"Audit policy for User Account Management and Logon/Logoff events not configured. auditpol confirms No Auditing for these subcategories.",2024-01-12
+AU-3,Content of Audit Records,Compliant,Pass,,2024-01-12
+AU-6,Audit Record Review,Compliant,Pass,,2024-01-12
+AU-9,Protection of Audit Information,Compliant,Pass,,2024-01-12
+AU-12,Audit Record Generation,Non-Compliant,Fail,"System is not forwarding logs to centralized SIEM. Splunk Universal Forwarder not installed.",2024-01-12
+CA-2,Control Assessments,Compliant,Pass,,2024-01-15
+CA-5,Plan of Action and Milestones,Non-Compliant,Fail,"POA&M items older than 90 days have not been updated. 4 items past due with no milestone updates.",2024-01-15
+CA-7,Continuous Monitoring,Compliant,Pass,,2024-01-15
+CM-2,Baseline Configuration,Compliant,Pass,,2024-01-18
+CM-6,Configuration Settings,Non-Compliant,Fail,"Multiple STIG settings not applied: PowerShell 2.0 not removed, AlwaysInstallElevated registry key set to 1, password complexity disabled.",2024-01-18
+CM-7,Least Functionality,Non-Compliant,Fail,"Telnet Client feature installed. Legacy FTP service running. Both prohibited by system baseline.",2024-01-18
+CM-8,System Component Inventory,Compliant,Pass,,2024-01-18
+CM-11,User-Installed Software,Compliant,Pass,,2024-01-18
+CP-9,System Backup,Compliant,Pass,,2024-01-20
+IA-2,Identification and Authentication,Compliant,Pass,,2024-01-22
+IA-5,Authenticator Management,Non-Compliant,Fail,"Password complexity policy disabled in local security policy. Minimum length requirement not enforced via GPO. Two service accounts found with passwords older than 365 days.",2024-01-22
+IA-6,Authentication Feedback,Compliant,Pass,,2024-01-22
+IA-8,Identification and Authentication (Non-Organizational Users),Compliant,Pass,,2024-01-22
+IR-4,Incident Handling,Compliant,Pass,,2024-01-25
+IR-6,Incident Reporting,Compliant,Pass,,2024-01-25
+MA-4,Nonlocal Maintenance,Compliant,Pass,,2024-01-28
+MP-5,Media Transport,Not Applicable,N/A,,2024-01-28
+RA-5,Vulnerability Scanning,Non-Compliant,Fail,"Last vulnerability scan completed 47 days ago. Policy requires monthly scanning. Apache Log4j 2.14.1 detected — known vulnerable version (Log4Shell CVE-2021-44228).",2024-01-30
+SA-11,Developer Testing and Evaluation,Not Reviewed,,,
+SC-5,Denial of Service Protection,Compliant,Pass,,2024-02-01
+SC-8,Transmission Confidentiality and Integrity,Non-Compliant,Fail,"TLS 1.0 and TLS 1.1 still enabled on IIS. Only TLS 1.2+ should be permitted. SCAP scan confirmed deprecated protocol support.",2024-02-01
+SC-28,Protection of Information at Rest,Non-Compliant,Fail,"BitLocker not enabled on data volumes of NIPRNET-DB-01. Sensitive database files not encrypted at rest.",2024-02-01
+SI-2,Flaw Remediation,Non-Compliant,Fail,"22 outstanding security patches older than 30 days. 3 critical patches (CVSS >= 9.0) older than 15 days. Windows Update configured to manual.",2024-02-05
+SI-3,Malicious Code Protection,Non-Compliant,Fail,"Windows Defender disabled on NIPRNET-WEB-01 and NIPRNET-DB-01. No alternative AV solution detected.",2024-02-05
+SI-4,System Monitoring,Compliant,Pass,,2024-02-05
+SI-7,Software and Firmware Integrity Verification,Compliant,Pass,,2024-02-05

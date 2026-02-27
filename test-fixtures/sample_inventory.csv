@@ -1,0 +1,17 @@
+Asset Name,Type,Vendor,Product,Version,OS,IP Address
+NIPRNET-WEB-01,Hardware,Microsoft,Windows Server 2019,1809,Windows Server 2019 Standard,10.10.1.50
+NIPRNET-DB-01,Hardware,Microsoft,Windows Server 2019,1809,Windows Server 2019 Datacenter,10.10.1.51
+NIPRNET-DC-01,Hardware,Microsoft,Windows Server 2019,1809,Windows Server 2019 Datacenter,10.10.1.10
+NIPRNET-FW-01,Hardware,Cisco,Firepower 2100,7.2.1,Cisco FTD,10.10.1.1
+NIPRNET-SW-01,Hardware,Cisco,Catalyst 9300,17.9.3,IOS XE 17.9.3,10.10.1.2
+NIPRNET-VCENTER,Hardware,VMware,vCenter Server,8.0.2,VMware vCenter,10.10.1.20
+IIS Web Server,Software,Microsoft,Internet Information Services,10.0,Windows Server 2019 Standard,10.10.1.50
+SQL Server 2019,Software,Microsoft,SQL Server,2019,Windows Server 2019 Datacenter,10.10.1.51
+Apache Log4j,Software,Apache,Log4j,2.14.1,Windows Server 2019 Standard,10.10.1.50
+OpenSSL,Software,OpenSSL,OpenSSL,1.1.1k,Windows Server 2019 Standard,10.10.1.50
+VMware ESXi,Software,VMware,ESXi,7.0.3,VMware ESXi 7.0,10.10.1.21
+VMware ESXi,Software,VMware,ESXi,7.0.3,VMware ESXi 7.0,10.10.1.22
+Oracle Java JRE,Software,Oracle,Java SE Runtime Environment,8.0.361,Windows Server 2019 Standard,10.10.1.51
+Adobe Acrobat,Software,Adobe,Acrobat Reader DC,22.003.20263,Windows Server 2019 Standard,10.10.1.50
+Splunk Enterprise,Software,Splunk,Splunk Enterprise,9.0.4,Windows Server 2019 Datacenter,10.10.1.30
+NIPRNET-PRINT-01,Hardware,HP,LaserJet Pro M404,2.1.0,,10.10.1.60
