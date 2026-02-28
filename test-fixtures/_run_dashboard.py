@@ -36,6 +36,7 @@ DEFAULT_SYS_NAME = "Tactical Command System (TCS)"
 DEFAULT_CKL      = str(_HERE / "TCS-APP-01_WIN2019.ckl")
 DEFAULT_INVENTORY= str(_HERE / "tcs_inventory.xlsx")
 DEFAULT_EMASS    = str(_HERE / "tcs_emass_export.csv")
+DEFAULT_POAM     = str(_HERE / "tcs_poam_export.csv")
 DEFAULT_OUT      = str(_HERE / "screenshots")
 
 
@@ -59,6 +60,8 @@ def parse_args():
                    help="Path to HW/SW inventory (.csv or .xlsx). Pass 'none' to skip.")
     p.add_argument("--emass",     default=DEFAULT_EMASS,
                    help="Path to eMASS export (.csv or .xlsx). Pass 'none' to skip.")
+    p.add_argument("--poam",      default=DEFAULT_POAM,
+                   help="Path to POA&M export (.csv or .xlsx). Pass 'none' to skip.")
     p.add_argument("--out",       default=DEFAULT_OUT,
                    metavar="SCREENSHOTS_DIR",
                    help="Directory to write screenshots into")
@@ -110,12 +113,14 @@ def main():
     ckl_path       = resolve_file(args.ckl)
     inventory_path = resolve_file(args.inventory)
     emass_path     = resolve_file(args.emass)
+    poam_path      = resolve_file(args.poam)
 
     print(f"Dashboard : {args.url}")
     print(f"System    : {args.name}")
     print(f"CKL       : {ckl_path or '(skipped)'}")
     print(f"Inventory : {inventory_path or '(skipped)'}")
     print(f"eMASS     : {emass_path or '(skipped)'}")
+    print(f"POA&M     : {poam_path or '(skipped)'}")
     print(f"NVD key   : {'set' if args.key else '(none — unauthenticated)'}")
     print(f"Headless  : {args.headless}")
     print(f"Screenshots: {shots_dir}")
@@ -173,6 +178,12 @@ def main():
             wait_spinner_gone(page)
             page.wait_for_timeout(1000)
 
+        if poam_path:
+            print("Uploading POA&M export…")
+            uploaders.nth(3).set_input_files(poam_path)
+            wait_spinner_gone(page)
+            page.wait_for_timeout(1000)
+
         shot(page, "02_files_loaded", shots_dir)
 
         # ── Run Analysis ─────────────────────────────────────────────────────
@@ -211,7 +222,14 @@ def main():
         page.wait_for_timeout(1500)
         shot(page, "07_emass_results", shots_dir)
 
-        # ── Tab 5: Risk Dashboard ────────────────────────────────────────────
+        # ── Tab 5: POA&M Analysis ────────────────────────────────────────────
+        print("Navigating to POA&M Analysis tab…")
+        page.get_by_role("tab", name="POA&M Analysis").click()
+        wait_spinner_gone(page)
+        page.wait_for_timeout(2000)
+        shot(page, "11_poam_analysis", shots_dir)
+
+        # ── Tab 6: Risk Dashboard ────────────────────────────────────────────
         print("Navigating to Risk Dashboard tab…")
         page.get_by_role("tab", name="Risk Dashboard").click()
         wait_spinner_gone(page)

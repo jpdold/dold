@@ -10,10 +10,12 @@ from config.system_types import SYSTEM_TYPES, SYSTEM_TYPE_OPTIONS
 from parsers.ckl_parser import parse_ckl
 from parsers.emass_parser import parse_emass
 from parsers.inventory_parser import parse_inventory
+from parsers.poam_parser import parse_poam
 from analysis.nvd_client import query_nvd, clear_cache
 from analysis.cisa_kev import fetch_kev, match_kev
 from analysis.risk_engine import compute_cia_scores
 from analysis.ato_engine import generate_ato_recommendation
+from analysis.poam_engine import analyze_poam
 from utils.exporter import export_excel, export_csv
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -115,6 +117,7 @@ def _run_analysis(
     emass_file,
     inventory_file,
     ckl_file,
+    poam_file,
     progress_bar,
     status_text,
 ):
@@ -148,6 +151,14 @@ def _run_analysis(
             st.session_state["inventory_df"] = inventory_df
         except Exception as exc:
             st.warning(f"Inventory parse error: {exc}")
+
+    poam_df = pd.DataFrame()
+    if poam_file is not None:
+        try:
+            poam_df = parse_poam(poam_file)
+            st.session_state["poam_df"] = poam_df
+        except Exception as exc:
+            st.warning(f"POA&M parse error: {exc}")
 
     progress_bar.progress(30)
     status_text.text("Querying NVD for CVEs…")
@@ -185,7 +196,16 @@ def _run_analysis(
     except Exception as exc:
         st.warning(f"KEV fetch error: {exc}")
 
-    progress_bar.progress(75)
+    progress_bar.progress(72)
+    status_text.text("Analyzing POA&M health…")
+
+    # Step 3.5: POA&M health analysis
+    poam_metrics = {}
+    if not poam_df.empty:
+        poam_metrics = analyze_poam(poam_df, emass_df)
+        st.session_state["poam_metrics"] = poam_metrics
+
+    progress_bar.progress(78)
     status_text.text("Computing CIA risk scores…")
 
     # Step 4: Risk scoring
@@ -195,6 +215,7 @@ def _run_analysis(
         emass_df=emass_df,
         kev_df=kev_df,
         system_type_key=system_type_key,
+        poam_metrics=poam_metrics if poam_metrics else None,
     )
     st.session_state["risk_scores"] = risk_scores
     progress_bar.progress(90)
@@ -207,6 +228,7 @@ def _run_analysis(
         kev_df=kev_df,
         cve_list=cve_list,
         emass_df=emass_df,
+        poam_metrics=poam_metrics if poam_metrics else None,
     )
     st.session_state["ato_result"] = ato_result
     st.session_state["system_name"] = system_name
@@ -242,7 +264,7 @@ with st.sidebar:
         clear_cache()
         for key in ["ckl_df", "emass_df", "inventory_df", "cve_list",
                     "kev_df", "risk_scores", "ato_result", "analysis_complete",
-                    "_kev_data"]:
+                    "_kev_data", "poam_df", "poam_metrics"]:
             st.session_state.pop(key, None)
         st.rerun()
 
@@ -252,11 +274,12 @@ with st.sidebar:
 # ──────────────────────────────────────────────────────────────────────────────
 # Tabs
 # ──────────────────────────────────────────────────────────────────────────────
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "⚙️ Configuration",
     "📦 Inventory & CVEs",
     "🔍 STIG Compliance",
     "📋 eMASS Results",
+    "📝 POA&M Analysis",
     "🎯 Risk Dashboard",
 ])
 
@@ -320,6 +343,12 @@ with tab1:
             help="eMASS controls export with compliance status columns",
         )
 
+        poam_file = st.file_uploader(
+            "POA&M Export (.csv or .xlsx)",
+            type=["csv", "xlsx"],
+            help="eMASS POA&M listing export — used to assess remediation plan health",
+        )
+
     st.divider()
 
     run_col, _ = st.columns([1, 3])
@@ -329,7 +358,7 @@ with tab1:
     if run_btn:
         if not system_name.strip():
             st.error("Please enter a system name before running analysis.")
-        elif not any([ckl_file, inventory_file, emass_file]):
+        elif not any([ckl_file, inventory_file, emass_file, poam_file]):
             st.warning("Upload at least one file to analyze.")
         else:
             progress_bar = st.progress(0)
@@ -343,6 +372,7 @@ with tab1:
                         emass_file=emass_file,
                         inventory_file=inventory_file,
                         ckl_file=ckl_file,
+                        poam_file=poam_file,
                         progress_bar=progress_bar,
                         status_text=status_text,
                     )
@@ -657,9 +687,174 @@ with tab4:
         st.success("No non-compliant controls found.")
 
 # ══════════════════════════════════════════════════════════════════════════════
-# TAB 5 — Risk Dashboard
+# TAB 5 — POA&M Analysis
 # ══════════════════════════════════════════════════════════════════════════════
 with tab5:
+    st.header("POA&M Analysis")
+
+    if not st.session_state.get("analysis_complete"):
+        st.info("Run an analysis in the Configuration tab to see results.")
+        st.stop()
+
+    poam_metrics = st.session_state.get("poam_metrics", {})
+    poam_df_tab = st.session_state.get("poam_df", pd.DataFrame())
+
+    if not poam_metrics or poam_df_tab.empty:
+        st.info("No POA&M data available. Upload a POA&M export file in Configuration and re-run analysis.")
+        st.stop()
+
+    # ── Health score cards ────────────────────────────────────────────────────
+    h1, h2, h3, h4, h5 = st.columns(5)
+    h1.metric("Total Items", poam_metrics.get("total_items", 0))
+    h2.metric("Completeness", f"{poam_metrics.get('completeness_score', 0):.0f}%")
+    h3.metric("Timeliness", f"{poam_metrics.get('timeliness_score', 0):.0f}%")
+    h4.metric("Effectiveness", f"{poam_metrics.get('effectiveness_score', 0):.0f}%")
+    health = poam_metrics.get("poam_health_score", 0)
+    if health >= 80:
+        health_delta = "Good"
+    elif health >= 60:
+        health_delta = "Acceptable"
+    elif health >= 40:
+        health_delta = "Deficient"
+    else:
+        health_delta = "Severely Deficient"
+    h5.metric("Health Score", f"{health:.0f}/100", delta=health_delta)
+
+    st.divider()
+
+    col_gauge_poam, col_status = st.columns([1, 1])
+
+    with col_gauge_poam:
+        # Health gauge
+        if health >= 80:
+            health_color = "#27ae60"
+        elif health >= 60:
+            health_color = "#f39c12"
+        elif health >= 40:
+            health_color = "#e67e22"
+        else:
+            health_color = "#c0392b"
+
+        fig_health = go.Figure(go.Indicator(
+            mode="gauge+number",
+            value=health,
+            title={"text": "POA&M Health Score", "font": {"size": 14}},
+            gauge={
+                "axis": {"range": [0, 100]},
+                "bar": {"color": health_color},
+                "steps": [
+                    {"range": [0, 40],  "color": "#fadbd8"},
+                    {"range": [40, 60], "color": "#fdebd0"},
+                    {"range": [60, 80], "color": "#fef9e7"},
+                    {"range": [80, 100],"color": "#d5f5e3"},
+                ],
+                "threshold": {
+                    "line": {"color": "black", "width": 3},
+                    "thickness": 0.85,
+                    "value": health,
+                },
+            },
+            number={"suffix": f"  {health_delta}"},
+        ))
+        fig_health.update_layout(height=250, margin=dict(t=40, b=10, l=20, r=20))
+        st.plotly_chart(fig_health, use_container_width=True)
+
+    with col_status:
+        st.subheader("Status Breakdown")
+        status_counts = poam_df_tab["Status"].str.strip().value_counts().reset_index()
+        status_counts.columns = ["Status", "Count"]
+        status_color_map = {
+            "Not Started":   "#c0392b",
+            "Ongoing":       "#f39c12",
+            "Completed":     "#27ae60",
+            "Risk Accepted": "#e67e22",
+        }
+        if not status_counts.empty:
+            fig_status_poam = px.bar(
+                status_counts,
+                x="Status",
+                y="Count",
+                color="Status",
+                color_discrete_map=status_color_map,
+                text="Count",
+            )
+            fig_status_poam.update_layout(
+                height=230, showlegend=False,
+                margin=dict(t=10, b=10, l=10, r=10),
+            )
+            st.plotly_chart(fig_status_poam, use_container_width=True)
+
+    st.divider()
+
+    # ── Overdue items ─────────────────────────────────────────────────────────
+    items_df = poam_metrics.get("items_df", pd.DataFrame())
+    overdue_count = poam_metrics.get("overdue_count", 0)
+
+    st.subheader(f"Overdue Items ({overdue_count})")
+    if not items_df.empty and overdue_count > 0:
+        overdue_df = items_df[items_df["Overdue"] == True].copy()
+        # Format date column
+        if "Scheduled_Completion" in overdue_df.columns:
+            overdue_df["Scheduled_Completion"] = overdue_df["Scheduled_Completion"].apply(
+                lambda v: v.strftime("%Y-%m-%d") if hasattr(v, "strftime") and not pd.isnull(v) else ""
+            )
+        display_overdue = overdue_df[
+            ["POAM_ID", "Control_ID", "Weakness_Name", "Status",
+             "Severity", "Scheduled_Completion", "POC"]
+        ]
+        st.dataframe(
+            display_overdue,
+            use_container_width=True,
+            height=min(200, overdue_count * 40 + 50),
+        )
+    else:
+        st.success("No overdue POA&M items.")
+
+    st.divider()
+
+    # ── Shortfall details ─────────────────────────────────────────────────────
+    shortfalls = poam_metrics.get("shortfalls", [])
+    st.subheader(f"Deficiency Details ({len(shortfalls)} items with issues)")
+    if shortfalls:
+        for sf in shortfalls:
+            poam_id = sf.get("poam_id", "")
+            ctrl = sf.get("control_id", "")
+            status_sf = sf.get("status", "")
+            weakness = sf.get("weakness_name", "")[:80]
+            with st.expander(f"[{ctrl}] {poam_id} — {weakness}  ({status_sf})"):
+                st.write("**Issues Identified:**")
+                for issue in sf.get("issues", []):
+                    st.write(f"• {issue}")
+                st.write("**Recommendations:**")
+                for rec in sf.get("recommendations", []):
+                    st.write(f"• {rec}")
+    else:
+        st.success("No POA&M deficiencies identified.")
+
+    st.divider()
+
+    # ── Full POA&M table ──────────────────────────────────────────────────────
+    st.subheader("Full POA&M Listing")
+    if not poam_df_tab.empty:
+        display_poam = poam_df_tab.copy()
+        # Format date columns
+        for dcol in ["Scheduled_Completion", "Milestone_Completion", "Date_Entered"]:
+            if dcol in display_poam.columns:
+                display_poam[dcol] = display_poam[dcol].apply(
+                    lambda v: v.strftime("%Y-%m-%d")
+                    if hasattr(v, "strftime") and not pd.isnull(v) else ""
+                )
+        show_cols = [c for c in [
+            "POAM_ID", "Control_ID", "Weakness_Name", "Status", "Severity",
+            "POC", "Scheduled_Completion", "Mitigation", "Milestone_Description",
+        ] if c in display_poam.columns]
+        st.dataframe(display_poam[show_cols], use_container_width=True, height=400)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 6 — Risk Dashboard
+# ══════════════════════════════════════════════════════════════════════════════
+with tab6:
     st.header("Risk Dashboard")
 
     if not st.session_state.get("analysis_complete"):
@@ -709,6 +904,8 @@ with tab5:
     overall_color = LEVEL_COLORS.get(overall_level, "#7f8c8d")
     overall_bg = LEVEL_BG.get(overall_level, "#f0f0f0")
 
+    _poam_health_display = risk_scores.get("poam_health_score")
+    _poam_str = f"&nbsp;&nbsp; POA&M Health: {_poam_health_display:.0f}/100" if _poam_health_display is not None else ""
     st.markdown(
         f"""
         <div style="background:{overall_bg};border-left:6px solid {overall_color};
@@ -720,7 +917,7 @@ with tab5:
                 CAT II: {risk_scores.get('open_cat2',0)} |
                 CAT III: {risk_scores.get('open_cat3',0)} &nbsp;&nbsp;
                 eMASS Compliance: {risk_scores.get('emass_compliance_pct',100):.1f}% &nbsp;&nbsp;
-                KEV Matches: {risk_scores.get('kev_count',0)}
+                KEV Matches: {risk_scores.get('kev_count',0)}{_poam_str}
             </p>
         </div>
         """,
@@ -766,8 +963,9 @@ with tab5:
     kev_mits = ato_result.get("kev_mitigations", [])
     cve_mits = ato_result.get("cve_mitigations", [])
     stig_mits = ato_result.get("stig_mitigations", [])
+    poam_mits = ato_result.get("poam_mitigations", [])
 
-    if not (kev_mits or cve_mits or stig_mits):
+    if not (kev_mits or cve_mits or stig_mits or poam_mits):
         st.success("No high-priority mitigations required.")
     else:
         if kev_mits:
@@ -814,6 +1012,27 @@ with tab5:
                     for cc in m.get("compensating_controls", []):
                         st.write(f"• {cc}")
 
+        if poam_mits:
+            st.markdown("#### POA&M Deficiencies")
+            for m in poam_mits:
+                sev = m.get("severity", "Unknown")
+                icon = "🔴" if sev.lower() == "critical" else (
+                    "🟠" if sev.lower() == "high" else (
+                        "🟡" if sev.lower() == "medium" else "🔵"
+                    )
+                )
+                poam_id = m.get("poam_id", "")
+                ctrl = m.get("control_id", "")
+                weakness = m.get("weakness_name", "")[:70]
+                with st.expander(f"{icon} [{ctrl}] {poam_id} — {weakness}"):
+                    st.write(f"**Status:** {m.get('status','')}")
+                    st.write("**Issues:**")
+                    for issue in m.get("issues", []):
+                        st.write(f"• {issue}")
+                    st.write("**Recommendations:**")
+                    for rec in m.get("recommendations", []):
+                        st.write(f"• {rec}")
+
     st.divider()
 
     # KEV matches table
@@ -854,6 +1073,7 @@ with tab5:
                 kev_df=st.session_state.get("kev_df"),
                 emass_df=st.session_state.get("emass_df"),
                 inventory_df=st.session_state.get("inventory_df"),
+                poam_df=st.session_state.get("poam_df"),
             )
             st.download_button(
                 label="📥 Download Excel Report",

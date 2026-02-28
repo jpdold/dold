@@ -70,6 +70,7 @@ def compute_cia_scores(
     emass_df: pd.DataFrame,
     kev_df: pd.DataFrame,
     system_type_key: str,
+    poam_metrics: dict = None,
 ) -> dict:
     """
     Compute CIA risk scores.
@@ -81,6 +82,7 @@ def compute_cia_scores(
     emass_df : DataFrame from emass_parser (may be None/empty)
     kev_df : DataFrame from cisa_kev matcher (may be None/empty)
     system_type_key : str key into SYSTEM_TYPES dict
+    poam_metrics : optional dict from analyze_poam() — applies risk modifier
 
     Returns
     -------
@@ -95,6 +97,7 @@ def compute_cia_scores(
         "open_cat2": int,
         "open_cat3": int,
         "emass_compliance_pct": float,
+        "poam_health_score": float or None,
     }
     """
     sys_config = SYSTEM_TYPES.get(system_type_key, SYSTEM_TYPES["it_general"])
@@ -124,13 +127,15 @@ def compute_cia_scores(
         ("A", sys_config["A_weight"], "A_impact"),
     ]
 
+    modifier = poam_metrics.get("risk_modifier", 0) if poam_metrics else 0
+
     scores = {}
     for dim, weight, impact_key in dimension_configs:
         stig_score = _stig_component(ckl_df, weight)
         cve_score = _cve_component(cve_list, impact_key)
         emass_score = _emass_component(emass_df, weight)
         raw = stig_score + cve_score + emass_score + kev_bonus_val + criticality_bonus
-        normalized = min(raw, 100.0)
+        normalized = min(max(raw + modifier, 0.0), 100.0)
         scores[dim] = {
             "score": round(normalized, 1),
             "level": _score_to_level(normalized),
@@ -140,6 +145,7 @@ def compute_cia_scores(
                 "emass": round(emass_score, 2),
                 "kev_bonus": round(kev_bonus_val, 2),
                 "criticality_bonus": criticality_bonus,
+                "poam_modifier": modifier,
             },
         }
 
@@ -155,4 +161,5 @@ def compute_cia_scores(
         "open_cat2": open_cat2,
         "open_cat3": open_cat3,
         "emass_compliance_pct": round(emass_compliance_pct, 1),
+        "poam_health_score": poam_metrics.get("poam_health_score") if poam_metrics else None,
     }

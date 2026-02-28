@@ -277,6 +277,26 @@ def _apply_emass_formatting(ws, df, fmts, last_row: int):
 # Main export function
 # ──────────────────────────────────────────────────────────────────────────────
 
+def _apply_poam_formatting(ws, df, fmts):
+    """Colour Status column on the POA&M Analysis sheet."""
+    status_fmt = {
+        "Not Started":   fmts["critical"],
+        "Ongoing":       fmts["medium"],
+        "Completed":     fmts["compliant"],
+        "Risk Accepted": fmts["high"],
+    }
+    status_col = _col_index(df, "Status")
+
+    for row_idx, (_, row) in enumerate(df.iterrows(), start=1):
+        for col_idx, col_name in enumerate(df.columns):
+            value = row[col_name]
+            if col_idx == status_col:
+                fmt = status_fmt.get(str(value), fmts["cell"])
+            else:
+                fmt = fmts["cell"]
+            _safe_write(ws, row_idx, col_idx, value, fmt)
+
+
 def export_excel(
     system_name: str,
     system_type: str,
@@ -287,6 +307,7 @@ def export_excel(
     kev_df: pd.DataFrame,
     emass_df: pd.DataFrame,
     inventory_df: pd.DataFrame,
+    poam_df: pd.DataFrame = None,
 ) -> bytes:
     """
     Export full assessment to a multi-sheet Excel workbook with
@@ -369,6 +390,23 @@ def export_excel(
             "Asset_Name": 25, "Type": 12, "Vendor": 20,
             "Product": 25, "Version": 15, "OS": 25, "IP_Address": 16,
         })
+
+        # ── Sheet 7: POA&M Analysis ───────────────────────────────────────
+        poam_export = _safe_df(poam_df)
+        # Convert datetime columns to strings for Excel compatibility
+        for col in ["Scheduled_Completion", "Milestone_Completion", "Date_Entered"]:
+            if col in poam_export.columns:
+                poam_export[col] = poam_export[col].apply(
+                    lambda v: v.strftime("%Y-%m-%d")
+                    if hasattr(v, "strftime") and not pd.isnull(v) else ""
+                )
+        ws_poam, poam_written = write_sheet(poam_export, "POA&M Analysis", {
+            "POAM_ID": 14, "Control_ID": 12, "Weakness_Name": 45,
+            "Status": 15, "POC": 20, "Scheduled_Completion": 20,
+            "Milestone_Description": 45, "Mitigation": 50, "Severity": 12,
+        })
+        if not poam_written.empty and "Status" in poam_written.columns:
+            _apply_poam_formatting(ws_poam, poam_written, fmts)
 
     return output.getvalue()
 

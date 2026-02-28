@@ -49,7 +49,8 @@ COMPENSATING_CONTROLS = {
 
 
 def _ato_decision(risk_scores: dict, ckl_df: pd.DataFrame, kev_df: pd.DataFrame,
-                  cve_list: list, emass_df: pd.DataFrame) -> tuple:
+                  cve_list: list, emass_df: pd.DataFrame,
+                  poam_metrics: dict = None) -> tuple:
     """
     Determine ATO recommendation and reasoning.
 
@@ -87,6 +88,14 @@ def _ato_decision(risk_scores: dict, ckl_df: pd.DataFrame, kev_df: pd.DataFrame,
     if compliance_pct < 60:
         reasons.append(f"eMASS compliance at {compliance_pct:.1f}% — below 60% minimum threshold")
 
+    # --- POA&M health escalation (DATO level) ---
+    poam_health = risk_scores.get("poam_health_score")
+    if poam_health is not None and poam_health < 40:
+        reasons.append(
+            f"POA&M health score {poam_health:.0f}/100 — severely deficient "
+            f"(NIST SP 800-37 Rev. 2 §3.6 non-conformance)"
+        )
+
     if reasons:
         return "DATO", reasons, "#c0392b"
 
@@ -106,6 +115,13 @@ def _ato_decision(risk_scores: dict, ckl_df: pd.DataFrame, kev_df: pd.DataFrame,
         )
     if 60 <= compliance_pct < 80:
         iato_reasons.append(f"eMASS compliance at {compliance_pct:.1f}% — below 80% (IATO threshold)")
+
+    # --- POA&M health escalation (IATO level) ---
+    if poam_health is not None and 40 <= poam_health < 60:
+        iato_reasons.append(
+            f"POA&M health score {poam_health:.0f}/100 — deficient remediation plan management "
+            f"(NIST SP 800-171 §3.12.4)"
+        )
 
     if iato_reasons:
         return "IATO", iato_reasons, "#e67e22"
@@ -235,12 +251,63 @@ def _generate_kev_mitigations(kev_df: pd.DataFrame) -> list:
     return mitigations
 
 
+_SEVERITY_SORT = {"critical": 0, "high": 1, "medium": 2, "low": 3, "unknown": 4}
+
+
+def _derive_severity(control_id: str, poam_severity: str) -> str:
+    """Derive display severity from POA&M severity field or fallback."""
+    if poam_severity and poam_severity.strip():
+        return poam_severity.strip()
+    return "Unknown"
+
+
+def _generate_poam_mitigations(poam_metrics: dict) -> list:
+    """
+    Build mitigation dicts from POA&M shortfalls, capped at 20 items,
+    sorted by severity (critical first).
+    """
+    if not poam_metrics:
+        return []
+    shortfalls = poam_metrics.get("shortfalls", [])
+    if not shortfalls:
+        return []
+
+    # Map POAM_ID → severity from items_df
+    items_df = poam_metrics.get("items_df")
+    severity_map = {}
+    if items_df is not None and not items_df.empty and "POAM_ID" in items_df.columns:
+        for _, row in items_df.iterrows():
+            severity_map[str(row.get("POAM_ID", ""))] = str(row.get("Severity", "Unknown"))
+
+    mitigations = []
+    for sf in shortfalls:
+        poam_id = sf.get("poam_id", "")
+        sev = _derive_severity(sf.get("control_id", ""), severity_map.get(poam_id, "Unknown"))
+        mitigations.append({
+            "type": "POA&M Deficiency",
+            "severity": sev,
+            "poam_id": poam_id,
+            "control_id": sf.get("control_id", ""),
+            "weakness_name": sf.get("weakness_name", ""),
+            "status": sf.get("status", ""),
+            "issues": sf.get("issues", []),
+            "recommendations": sf.get("recommendations", []),
+        })
+
+    # Sort by severity (critical first)
+    mitigations.sort(
+        key=lambda m: _SEVERITY_SORT.get(m["severity"].lower(), 4)
+    )
+    return mitigations[:20]
+
+
 def generate_ato_recommendation(
     risk_scores: dict,
     ckl_df: pd.DataFrame,
     kev_df: pd.DataFrame,
     cve_list: list,
     emass_df: pd.DataFrame,
+    poam_metrics: dict = None,
 ) -> dict:
     """
     Generate complete ATO recommendation with mitigations.
@@ -254,10 +321,11 @@ def generate_ato_recommendation(
         "stig_mitigations": list,
         "cve_mitigations": list,
         "kev_mitigations": list,
+        "poam_mitigations": list,
     }
     """
     recommendation, reasons, color = _ato_decision(
-        risk_scores, ckl_df, kev_df, cve_list, emass_df
+        risk_scores, ckl_df, kev_df, cve_list, emass_df, poam_metrics
     )
 
     return {
@@ -267,4 +335,5 @@ def generate_ato_recommendation(
         "stig_mitigations": _generate_stig_mitigations(ckl_df),
         "cve_mitigations": _generate_cve_mitigations(cve_list),
         "kev_mitigations": _generate_kev_mitigations(kev_df),
+        "poam_mitigations": _generate_poam_mitigations(poam_metrics),
     }
