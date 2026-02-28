@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CHECKLIST>
+  <ASSET>
+    <ROLE>Member Server</ROLE>
+    <ASSET_TYPE>Computing</ASSET_TYPE>
+    <HOST_NAME>TCS-APP-01</HOST_NAME>
+    <HOST_IP>172.16.10.10</HOST_IP>
+    <HOST_MAC>00:50:56:BC:01:0A</HOST_MAC>
+    <HOST_FQDN>tcs-app-01.tcs.mil.local</HOST_FQDN>
+    <TECH_AREA>Application Review</TECH_AREA>
+    <TARGET_KEY>4311</TARGET_KEY>
+    <WEB_OR_DATABASE>false</WEB_OR_DATABASE>
+    <WEB_DB_SITE></WEB_DB_SITE>
+    <WEB_DB_INSTANCE></WEB_DB_INSTANCE>
+  </ASSET>
+  <STIGS>
+    <iSTIG>
+      <STIG_INFO>
+        <SI_DATA><SID_NAME>version</SID_NAME><SID_DATA>3</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>classification</SID_NAME><SID_DATA>UNCLASSIFIED</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>customname</SID_NAME><SID_DATA></SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>stigid</SID_NAME><SID_DATA>Windows_Server_2019_STIG</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>description</SID_NAME><SID_DATA>Windows Server 2019 Security Technical Implementation Guide</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>filename</SID_NAME><SID_DATA>U_MS_Windows_Server_2019_V3R3_STIG.zip</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>releaseinfo</SID_NAME><SID_DATA>Release: 3 Benchmark Date: 26 Jul 2024</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>title</SID_NAME><SID_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>uuid</SID_NAME><SID_DATA>9c3d7b2a-4f1e-4a82-bc91-d38e5c09f14d</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>notice</SID_NAME><SID_DATA>terms-of-use</SID_DATA></SI_DATA>
+        <SI_DATA><SID_NAME>source</SID_NAME><SID_DATA>STIG.DOD.MIL</SID_DATA></SI_DATA>
+      </STIG_INFO>
+
+      <!-- ═══════════════════ CAT I (HIGH) — OPEN ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205625</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>high</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205625r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-00-000010</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have Telnet Client turned off.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Discuss</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Unnecessary services increase the attack surface of a system. Telnet provides cleartext communication and does not support required levels of authentication or encryption.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Check_Content</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Run "Windows Features" and verify "Telnet Client" is not installed. If Telnet Client is installed, this is a finding.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Uninstall "Telnet Client" from Windows Features. Run: Remove-WindowsFeature Telnet-Client</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>False_Positives</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>False_Negatives</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Documentable</VULN_ATTRIBUTE><ATTRIBUTE_DATA>false</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Mitigations</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Potential_Impact</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Third_Party_Tools</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Mitigation_Control</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Security_Override_Guidance</VULN_ATTRIBUTE><ATTRIBUTE_DATA></ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Check_Content_Ref</VULN_ATTRIBUTE><ATTRIBUTE_DATA>M</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Weight</VULN_ATTRIBUTE><ATTRIBUTE_DATA>10.0</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Class</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Unclass</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Telnet Client feature is installed. Verified via PowerShell: Get-WindowsFeature Telnet-Client returns InstallState: Installed. Feature was installed by a legacy script and not tracked in the baseline.</FINDING_DETAILS>
+        <COMMENTS>POA&amp;M submitted (POAM-2025-019). Scheduled for removal during maintenance window 2025-05-10.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205909</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>high</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000095-GPOS-00049</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205909r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-MS-000020</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must use an antivirus program.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Discuss</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Malicious software can establish a base on individual desktops and servers. Employing an automated mechanism to detect this type of software will aid in elimination of the software from the operating system.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Install an antivirus solution on the system. Ensure definitions are current and real-time protection is enabled.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-001761</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Windows Defender Antivirus is disabled (service stopped). No third-party AV solution installed. SCAP scan result confirms AV protection absent. Get-MpComputerStatus returns AMRunningMode: Not running.</FINDING_DETAILS>
+        <COMMENTS>Trellix endpoint agent procurement approved. ETA for deployment: 2025-05-15. POAM-2025-020 submitted.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205749</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>high</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205749r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-CC-000210</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have the Server Message Block (SMB) v1 protocol disabled on the SMB server.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Discuss</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SMBv1 is a legacy protocol with well-known security weaknesses. It was exploited in the WannaCry and NotPetya attacks. Disabling it reduces the attack surface significantly.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Run: Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>SMBv1 is enabled. Get-SmbServerConfiguration | Select EnableSMB1Protocol returns True. A legacy scanner integration relies on SMBv1 file share access. Migration has not been completed.</FINDING_DETAILS>
+        <COMMENTS>Legacy scanner vendor contacted for SMBv2-compatible client update. POAM-2025-021 submitted. ETA Q3 2025.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ CAT II (MEDIUM) — OPEN ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205630</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205630r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-00-000080</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have Windows PowerShell 2.0 removed.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Discuss</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows PowerShell 2.0 is incompatible with constrained language mode and does not support module logging or script block logging, allowing an attacker to bypass security controls.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Uninstall PowerShell 2.0: Remove-WindowsFeature PowerShell-V2 -Restart</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>PowerShell 2.0 Engine is installed. Get-WindowsFeature PowerShell-V2 returns InstallState: Installed. Enabled alongside the application deployment package during initial build.</FINDING_DETAILS>
+        <COMMENTS>Scheduled for removal in next maintenance window 2025-05-10. Regression test required for Tomcat startup scripts.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205733</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000163-GPOS-00072</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205733r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-CC-000040</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must be configured to audit Account Management - User Account Management successes and failures.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Configure audit policy: auditpol /set /subcategory:"User Account Management" /success:enable /failure:enable</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000172</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>auditpol /get /subcategory:"User Account Management" returns No Auditing for both Success and Failure. Audit policy is not applied via GPO on this system.</FINDING_DETAILS>
+        <COMMENTS>GPO change request submitted to security team (CR-2025-0412). Pending security team approval.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205800</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205800r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-CC-000310</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must disable the Windows Installer Always install with elevated privileges option.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Set registry: HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated = 0. Apply via GPO: Computer Configuration >> Administrative Templates >> Windows Components >> Windows Installer >> Always install with elevated privileges = Disabled.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-001812</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Registry value HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated is set to 0x1 (1). Also confirmed: HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated = 0x1.</FINDING_DETAILS>
+        <COMMENTS>Set during initial OS build by legacy configuration script. Remediation included in next hardening sprint.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205850</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00228</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205850r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-SO-000300</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have the built-in Windows password complexity policy enabled.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Enable via GPO: Computer Configuration >> Windows Settings >> Security Settings >> Account Policies >> Password Policy >> Password must meet complexity requirements = Enabled.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000192</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>secedit /export /cfg C:\temp\secedit.cfg confirms PasswordComplexity = 0. Local security policy shows complexity disabled. Overridden by a local policy that was never synchronized with domain GPO.</FINDING_DETAILS>
+        <COMMENTS>POAM-2025-022 submitted. Domain GPO will enforce complexity. Local override must be removed.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205638</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205638r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-00-000190</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have the Print Spooler service disabled (print servers and domain controllers are exempt).</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Discuss</VULN_ATTRIBUTE><ATTRIBUTE_DATA>The Print Spooler service has been associated with multiple high-severity vulnerabilities including PrintNightmare (CVE-2021-34527). On non-print servers the service is unnecessary and must be disabled.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Stop and disable the Print Spooler service: Stop-Service -Name Spooler; Set-Service -Name Spooler -StartupType Disabled</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>Print Spooler service is Running and set to Automatic startup. Get-Service Spooler confirms Status: Running. This is not a print server. No documented exception on file.</FINDING_DETAILS>
+        <COMMENTS>Remediation to be applied during maintenance window 2025-05-10.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ CAT III (LOW) — OPEN ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205660</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>low</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Group_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SRG-OS-000480-GPOS-00227</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205660r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-00-000400</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 systems must have Unified Extensible Firmware Interface (UEFI) firmware and be configured to run in UEFI mode, not Legacy BIOS.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Fix_Text</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Ensure UEFI firmware is installed. Configure the system to boot in UEFI mode via BIOS/firmware settings.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Responsibility</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Information Assurance Officer</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Open</STATUS>
+        <FINDING_DETAILS>System is running in Legacy BIOS mode. msinfo32 reports: BIOS Mode: Legacy. Secure Boot state: Unsupported.</FINDING_DETAILS>
+        <COMMENTS>Hardware refresh for TCS-APP-01 scheduled for Q4 FY25. Will migrate to UEFI at that time. POAM-2025-023 submitted.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ NOT A FINDING ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205658</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205658r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-00-000380</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must have a host-based firewall installed and enabled.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>NotAFinding</STATUS>
+        <FINDING_DETAILS>Windows Defender Firewall is enabled on all profiles (Domain, Private, Public). Verified: netsh advfirewall show allprofiles state confirms State: ON for all profiles.</FINDING_DETAILS>
+        <COMMENTS></COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205820</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205820r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-SO-000120</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 minimum password length must be configured to 14 characters.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000205</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>NotAFinding</STATUS>
+        <FINDING_DETAILS>Minimum password length is set to 14 characters. Verified via secedit /export /cfg — MinimumPasswordLength = 14. GPO is applied and enforced via domain policy.</FINDING_DETAILS>
+        <COMMENTS></COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205704</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205704r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-CC-000100</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must prevent the display of slide shows on the lock screen.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000381</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>NotAFinding</STATUS>
+        <FINDING_DETAILS>Registry key HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization\NoLockScreenSlideshow = 1. Confirmed via GPO enforcement. Lock screen slide show is disabled.</FINDING_DETAILS>
+        <COMMENTS></COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205672</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>high</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205672r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-SO-000050</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must automatically remove or disable temporary user accounts after 72 hours.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000016</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>NotAFinding</STATUS>
+        <FINDING_DETAILS>No temporary user accounts found on this system. All accounts are domain accounts with standard expiration enforcement. Verified via Get-LocalUser — only built-in accounts present with Administrator disabled.</FINDING_DETAILS>
+        <COMMENTS></COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ NOT APPLICABLE ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205910</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205910r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-MS-000030</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 must be running Microsoft .NET Framework 4.6 or later.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Not_Applicable</STATUS>
+        <FINDING_DETAILS>This system runs Eclipse Temurin JRE 17 (Java) for the TCS application stack. No .NET applications are hosted on this server. .NET Framework requirement is N/A per mission profile.</FINDING_DETAILS>
+        <COMMENTS>Approved N/A by ISSO on 2025-04-07. Documented in SSP Appendix A.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+      <!-- ═══════════════════ NOT REVIEWED ═══════════════════ -->
+      <VULN>
+        <STIG_DATA><VULN_ATTRIBUTE>Vuln_Num</VULN_ATTRIBUTE><ATTRIBUTE_DATA>V-205915</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Severity</VULN_ATTRIBUTE><ATTRIBUTE_DATA>medium</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_ID</VULN_ATTRIBUTE><ATTRIBUTE_DATA>SV-205915r958478_rule</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Ver</VULN_ATTRIBUTE><ATTRIBUTE_DATA>WN19-MS-000040</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>Rule_Title</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Windows Server 2019 Exploit Protection system-level mitigation, Data Execution Prevention (DEP), must be on.</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>STIGRef</VULN_ATTRIBUTE><ATTRIBUTE_DATA>Microsoft Windows Server 2019 Security Technical Implementation Guide :: Version 3, Release 3</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>TargetKey</VULN_ATTRIBUTE><ATTRIBUTE_DATA>4311</ATTRIBUTE_DATA></STIG_DATA>
+        <STIG_DATA><VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE><ATTRIBUTE_DATA>CCI-002824</ATTRIBUTE_DATA></STIG_DATA>
+        <STATUS>Not_Reviewed</STATUS>
+        <FINDING_DETAILS></FINDING_DETAILS>
+        <COMMENTS>Pending review. Tool access required to validate BCDEdit /enum — scheduled for next assessment cycle 2025-07-01.</COMMENTS>
+        <SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
+        <SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
+      </VULN>
+
+    </iSTIG>
+  </STIGS>
+</CHECKLIST>

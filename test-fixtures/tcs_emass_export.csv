@@ -1,0 +1,42 @@
+Control ID,Control Name,Compliance Status,Test Result,Findings,Test Date
+AC-1,Access Control Policy and Procedures,Compliant,Pass,,2025-04-08
+AC-2,Account Management,Non-Compliant,Fail,"Service accounts svc_tcs_app and svc_tcs_rpt have no expiration configured and passwords have not been rotated in 420+ days. Four inactive user accounts remain enabled.",2025-04-08
+AC-3,Access Enforcement,Compliant,Pass,,2025-04-08
+AC-4,Information Flow Enforcement,Compliant,Pass,,2025-04-08
+AC-6,Least Privilege,Non-Compliant,Fail,"Eleven standard user accounts have local Administrator group membership on TCS-APP-01 and TCS-DB-01. No documented business justification for elevated access on file.",2025-04-08
+AC-7,Unsuccessful Logon Attempts,Compliant,Pass,,2025-04-08
+AC-11,Session Lock,Non-Compliant,Fail,"Screen lock inactivity timeout is set to 30 minutes on TCS-WS-01 and TCS-WS-02. STIG requirement is 15 minutes or less.",2025-04-08
+AC-17,Remote Access,Compliant,Pass,,2025-04-08
+AU-2,Event Logging,Non-Compliant,Fail,"Audit policy subcategories for Logon/Logoff and Privilege Use are set to No Auditing on TCS-DB-01. auditpol /get confirms missing event categories.",2025-04-09
+AU-3,Content of Audit Records,Compliant,Pass,,2025-04-09
+AU-6,Audit Record Review,Compliant,Pass,,2025-04-09
+AU-9,Protection of Audit Information,Compliant,Pass,,2025-04-09
+AU-12,Audit Record Generation,Non-Compliant,Fail,"TCS-WEB-01 is not forwarding IIS access logs to the enterprise SIEM. Splunk Universal Forwarder installed but output configuration missing.",2025-04-09
+CA-2,Control Assessments,Compliant,Pass,,2025-04-11
+CA-5,Plan of Action and Milestones,Non-Compliant,Fail,"Six POA&M items are past scheduled completion date with no milestone updates. Oldest item is 127 days overdue (POAM-2024-031).",2025-04-11
+CA-7,Continuous Monitoring,Compliant,Pass,,2025-04-11
+CM-2,Baseline Configuration,Compliant,Pass,,2025-04-14
+CM-6,Configuration Settings,Non-Compliant,Fail,"Windows Remote Management (WinRM) is enabled using HTTP (port 5985) on TCS-APP-01. STIG requires HTTPS-only. PowerShell 2.0 Engine remains installed on TCS-DB-01.",2025-04-14
+CM-7,Least Functionality,Non-Compliant,Fail,"Print Spooler service is running and set to Automatic on TCS-APP-01 and TCS-DB-01. No business requirement documented. Telnet Client feature installed on TCS-WEB-01.",2025-04-14
+CM-8,System Component Inventory,Compliant,Pass,,2025-04-14
+CM-10,Software Usage Restrictions,Compliant,Pass,,2025-04-14
+CM-11,User-Installed Software,Non-Compliant,Fail,"Unauthorized software detected: 7-Zip 23.01 and VLC Media Player 3.0.20 found on TCS-WS-02. Neither application is on the approved software list.",2025-04-14
+CP-9,System Backup,Compliant,Pass,,2025-04-16
+IA-2,Identification and Authentication,Compliant,Pass,,2025-04-17
+IA-5,Authenticator Management,Non-Compliant,Fail,"Password minimum length GPO is set to 12 characters. STIG requirement is 14 characters. Two service accounts have passwords older than 365 days with no rotation schedule.",2025-04-17
+IA-6,Authentication Feedback,Compliant,Pass,,2025-04-17
+IA-8,Identification and Authentication (Non-Organizational Users),Compliant,Pass,,2025-04-17
+IR-4,Incident Handling,Compliant,Pass,,2025-04-18
+IR-6,Incident Reporting,Compliant,Pass,,2025-04-18
+MA-4,Nonlocal Maintenance,Compliant,Pass,,2025-04-22
+MP-5,Media Transport,Not Applicable,N/A,,2025-04-22
+RA-5,Vulnerability Scanning,Non-Compliant,Fail,"Last authenticated vulnerability scan of TCS-DB-01 completed 52 days ago. Policy requires monthly scanning. Tenable scan results show 3 critical CVEs unmitigated: CVE-2024-21413 (CVSS 9.8), CVE-2024-26234 (CVSS 6.7), CVE-2023-36884 (CVSS 8.8).",2025-04-23
+SA-11,Developer Testing and Evaluation,Not Reviewed,,,
+SC-5,Denial of Service Protection,Compliant,Pass,,2025-04-25
+SC-7,Boundary Protection,Compliant,Pass,,2025-04-25
+SC-8,Transmission Confidentiality and Integrity,Non-Compliant,Fail,"TLS 1.0 and 1.1 remain enabled in the IIS SSL/TLS configuration on TCS-WEB-01. SCAP scan confirmed deprecated protocol support. Only TLS 1.2 and 1.3 are permitted per STIG.",2025-04-25
+SC-28,Protection of Information at Rest,Non-Compliant,Fail,"BitLocker Drive Encryption is not enabled on data volumes (D:\ and E:\) of TCS-DB-01. Database files containing PII are unencrypted at rest.",2025-04-25
+SI-2,Flaw Remediation,Non-Compliant,Fail,"18 outstanding security patches on TCS-APP-01 and TCS-WEB-01 are more than 30 days old. Four critical patches (CVSS >= 9.0) exceed the 15-day remediation SLA. Windows Update configured to manual on both systems.",2025-04-28
+SI-3,Malicious Code Protection,Non-Compliant,Fail,"Microsoft Defender Antivirus definition files on TCS-WS-01 are 9 days old. Policy requires definitions updated within 3 days. Real-time protection is enabled but signatures are stale.",2025-04-28
+SI-4,System Monitoring,Compliant,Pass,,2025-04-28
+SI-7,Software and Firmware Integrity Verification,Compliant,Pass,,2025-04-28

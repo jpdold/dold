@@ -6,3 +6,6 @@ __pycache__/
 *.csv
 !test-fixtures/sample_*.csv
 !test-fixtures/sample_*.ckl
+!test-fixtures/tcs_*.csv
+!test-fixtures/tcs_*.xlsx
+!test-fixtures/TCS-*.ckl

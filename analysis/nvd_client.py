@@ -62,7 +62,7 @@ def _parse_cvss_impacts(metrics: dict) -> tuple:
 
 
 def query_nvd(vendor: str, product: str, api_key: Optional[str] = None,
-              results_per_page: int = 15, max_retries: int = 4) -> list:
+              results_per_page: int = 2000, max_retries: int = 4) -> list:
     """
     Query NVD CVE API 2.0 for CVEs matching vendor + product.
 
